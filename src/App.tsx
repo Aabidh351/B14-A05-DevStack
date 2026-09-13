@@ -4,6 +4,7 @@ import Explore from './components/Explore'
 import Footer from './components/Footer'
 import Hero from './components/HeroBanner'
 import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
       <Explore/>
     </Suspense>
     <Footer />
+    <ToastContainer
+        position="top-right"
+        autoClose={2000}
+      />
     </>
   )
 }

@@ -1,8 +1,9 @@
-import { Suspense, use, useState } from "react";
+import { use, useState } from "react";
 import techPromise from "../../public/API/techPromise"
 import type { TechType } from "../types/TechType";
 import TechCard from "./TechCard";
 import YourStack from "./YourStack";
+import { toast } from "react-toastify"
 
 const Explore = () => {
   const [selectedTech, setSelectedTech] = useState<TechType[]>([]);
@@ -10,17 +11,36 @@ const Explore = () => {
 const tech = use(techPromise);
 
   const handleAdd = (technology: TechType) => {
+    const alreadyExists = selectedTech.some(
+    (item) => item.id === technology.id
+  );
+
+  if (alreadyExists) {
+    toast.warning(`${technology.name} is already in your stack!`);
+    return;
+  }
     setSelectedTech((previousTech) => [...previousTech,technology]);
+    toast.success(`${technology.name} added to your stack!`);
   };
 
   const handleRemove = (id: string) => {
+    const technology = selectedTech.find(
+    (item) => item.id === id
+  );
     setSelectedTech((previousTech) =>
       previousTech.filter((technology) => technology.id !== id)
     );
+    if (technology) {
+    toast.info(`${technology.name} removed from your stack.`);
+  }
   };
 
   const handleRemoveAll = () => {
-    setSelectedTech([]);
+    if (selectedTech.length === 0) {
+    return;
+  }
+  setSelectedTech([]);
+  toast.info("All technologies removed from your stack.");
   };
 
   return (
