@@ -1,5 +1,5 @@
 import heroImage from "../assets/banner-stack.png";
-
+import gradientStyle from "../Styles/gradientStyle.ts"
 const Hero = () => {
   return (
     <section className="w-full">
@@ -11,7 +11,7 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
               Build Your Ideal
               <br />
-              <span className="bg-linear-to-r from-orange-500 via-pink-500 to-violet-600 bg-clip-text text-transparent">
+              <span className={`${gradientStyle} bg-clip-text text-transparent`}>
                 Development Stack
               </span>
             </h1>
@@ -22,7 +22,7 @@ const Hero = () => {
 
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <button className="px-7 py-3 text-white font-medium rounded-lg bg-linear-to-r from-orange-500 via-pink-500 to-violet-600">
+              <button className={`${gradientStyle} px-7 py-3 text-white font-medium rounded-lg`}>
                 Explore Technologies
               </button>
               <button className="px-15 py-3 text-gray-700 font-medium rounded-lg border border-gray-200 hover:bg-[#D91B7E] hover:text-white">
