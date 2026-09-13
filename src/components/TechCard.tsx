@@ -2,11 +2,13 @@ import type { TechType } from "../types/TechType";
 
 type TechCardProps = {
   technology: TechType;
+  onAdd: (technology: TechType) => void;
+  isAdded: boolean;
 };
 
-const TechCard = ({ technology }: TechCardProps) => {
+const TechCard = ({ technology, onAdd, isAdded }: TechCardProps) => {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+    <div className={`rounded-xl border ${isAdded ? 'border-[#D91B7E]' : 'border-gray-200'} bg-white p-5 shadow-sm transition hover:shadow-md`}>
 
       <div className="flex items-center justify-between">
         <img src={technology.icon} alt={technology.name} className="h-10 w-10 object-contain"/>
@@ -36,8 +38,11 @@ const TechCard = ({ technology }: TechCardProps) => {
           ⭐ {technology.rating}
         </span>
       </div>
-      <button className="mt-5 w-full rounded-lg bg-gray-900 py-2.5 text-sm font-medium text-white transition hover:bg-[#D91B7E]">
-        Add to Stack
+      <button
+        disabled={isAdded}
+        onClick={() => onAdd(technology)}
+        className={`mt-5 w-full rounded-lg py-2.5 text-sm font-medium ${isAdded ? "cursor-not-allowed bg-pink-100 text-[#D91B7E]" : "bg-gray-900 text-white hover:bg-[#D91B7E]"}`}>
+            {isAdded ? "✔ Added to Stack" : "Add to Stack"}
       </button>
     </div>
   );
