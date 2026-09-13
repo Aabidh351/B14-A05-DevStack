@@ -1,22 +1,13 @@
-import { useEffect, useState } from "react";
+import { Suspense, use, useState } from "react";
+import techPromise from "../../public/API/techPromise"
 import type { TechType } from "../types/TechType";
 import TechCard from "./TechCard";
 import YourStack from "./YourStack";
 
 const Explore = () => {
-  const [tech, setTech] = useState<TechType[]>([]);
   const [selectedTech, setSelectedTech] = useState<TechType[]>([]);
 
-  useEffect(() => {
-    const fetchTech = async () => {
-      const response = await fetch("/API/tech-data.json");
-      const data = await response.json();
-
-      setTech(data);
-    };
-
-    fetchTech();
-  }, []);
+const tech = use(techPromise);
 
   const handleAdd = (technology: TechType) => {
     setSelectedTech((previousTech) => [...previousTech,technology]);

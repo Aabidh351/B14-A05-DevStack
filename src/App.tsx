@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import './App.css'
 import Explore from './components/Explore'
 import Footer from './components/Footer'
@@ -10,7 +11,9 @@ function App() {
     <>
     <Navbar/>
     <Hero/>
-    <Explore/>
+    <Suspense fallback={<div className='text-center text-4xl text-[#dd3580]'>Loading...</div>}>
+      <Explore/>
+    </Suspense>
     <Footer />
     </>
   )
