@@ -21,11 +21,11 @@ const Hero = () => {
             </p>
 
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <button className={`${gradientStyle} px-7 py-3 text-white font-medium rounded-lg`}>
+            <div className="mt-8 flex flex-wrap justify-center md:justify-start items-center gap-1 md:gap-4">
+              <button className={`${gradientStyle} px-3 md:px-7 py-3 text-white font-medium rounded-lg`}>
                 Explore Technologies
               </button>
-              <button className="px-15 py-3 text-gray-700 font-medium rounded-lg border border-gray-200 hover:bg-[#D91B7E] hover:text-white">
+              <button className="px-3 md:px-15 py-3 text-gray-700 font-medium rounded-lg border border-gray-200 hover:bg-[#D91B7E] hover:text-white">
                 Learn More
               </button>
 
